@@ -1,50 +1,127 @@
 # DZMeBookRead
 
-![Swift Version](https://img.shields.io/badge/Swift-3.x-orange.svg) 
-![Xcode Version](https://img.shields.io/badge/Xcode-8.2.1-orange.svg) 
-![Author](https://img.shields.io/badge/Author-DZM-blue.svg) 
+![Version](https://img.shields.io/badge/Version-1.3-orange.svg)
+![Swift Version](https://img.shields.io/badge/Swift-4.2-orange.svg)
+![Xcode Version](https://img.shields.io/badge/Xcode-10.2-orange.svg)
+![Author](https://img.shields.io/badge/Author-DZM-blue.svg)
 
-有时间我会把下划线,笔记...这些常用功能加进去
+***
 
-(不好意思 为了展示更多 下载包可能有点大 因为放了下面的展示图片)
+#### OC如何集成本DEMO
 
-改项目推到重做 代码简洁注释多 方法封装可拷贝 该项目支持直接拖入项目使用
+    示例:  https://github.com/dengzemiao/OCDZMeBookRead
 
-翻页效果: 无效果,覆盖,仿真,上下滚动
+***
 
-其他功能: 字体切换 书签功能 阅读记录 亮度调整 背景切换 文件解析  内容排版美观优化(多余空格回车都会进行清理) 分页精确 
+#### DEMO效果：
 
-(网络小说获取章节地方有代码提示怎么做) 仿真模式翻页背面颜色跟着主颜色变(系统默认是白色) 
+![DEMO效果](gif_0.gif)
 
-定位: 阅读记录 书签 定位精确 
+***
 
-内存: 只要看不见的章节都会进行清理内存 不会占用内存
+#### Swift4.0 版本效果(下载地址在底部)：
 
-小说《覆盖效果》DZMCoverAnimation: https://github.com/dengzemiao/DZMCoverAnimation
+![DEMO效果](gif_1.gif)
 
-UIPageViewController 翻页背景颜色修改 : http://www.jianshu.com/p/3e75fa22ada8
+***
 
-Epub的同学请看这里: 用WebView来做 那需要JS功底而且效果还没那么好, 那么可以参考这个大神的思路把它解析成跟Txt一样的章节文件进行阅读:https://github.com/GGGHub/Reader, 可以只看他的Epub解析代码即可,获得章节字符串之后跟我的Demo一样都转成章节模型存起来 就都是一样了, 封面图片什么都是可以进行图文混排的。 你要是JS好的话可以忽略这句话
+#### 简介:
 
+    提示: 导入项目流程 - 往下滚动
+    
+    下载不同版本可在上面的 Branch 选项中选择下载版本。
+    
+    v1.3 (Swift4.2) (master分支) { (TXT,有书籍首页)
+    
+        2019-5-17 修复: 更换滚动模式章节内容存储方式。待以后有解决方案在转回v1.2版本存储方式。(通过在章节列表Model存放滚动模式中的章节内容Model)
+    }
+    
+    v1.2 (Swift4.2) { (TXT,有书籍首页)
+    
+        2019-5-20 BUG: 滚动模式在iOS12版本以上会出现闪退,原因是字典里面的章节内容对象提前释放了,iOS12以下却没有问题,暂时没有更好的存储方式准备先替换为v1.3版本存储方式。
+        
+        2019-5-17 修复: 书籍首页添加标签BUG, 第一次进入创建阅读页多次BUG。
+    
+        2019-5-16 更新: 加入TXT全本快速进入阅读。
+    }
+    
+    v1.1 (Swift4.2) { (TXT,有书籍首页)
+    
+        2019-5-16 更新: 解析文本,代码细节优化。
+        
+        2019-5-10 修复: 无效果快速点击BUG。
+        
+        2019-5-7 更新: 加入书籍首页支持。
+    }
+    
+    v1.0 (Swift4.2) { (TXT,无书籍首页)
+    
+        2019-4-29 更新: 重做Demo, 升级Swift4.2, 解决遗留问题, 优化代码使用。
+    }
+    
+***
 
-唯一遗憾: 上下滚动 出现新章节会稍有点卡顿 原因是 在刷新字体以及绘制UI 但是不影响使用以及阅读 如果谁有好的办法解决麻烦联系下我 
+#### 小说相关库：
 
-功能扩展(本地阅读快速进入阅读): 正则搜索获取小说所有的章节Range Range数组需要保存 然后在加载一或多个(自定)章节 立马回调进入阅读页面 其他章节在后台解析 然后在ReadModel中做个BOOL值判断是否解析完成这个小说(也可以使用记录解析到的章节ID是否有值来做判断) 也需要记录当前解析到什么章节 以防没有解析完成用户就退出APP 这样会终止导致不全 下次进入这本书可以继续后台进行解析。 当点击没有解析出来的章节时 可通过Range数组直接去获取出来 在后台解析章节的地方则需要判断是否存在该章节存在则不解析 当解析到最后一张了 则把ReadMode的BOOL值设为完成 然后情况不需要的数据(比如记录章节位置的 或者章节Rang数组什么的) 注意:显示的章节会先检查本地有没有存在可阅读文件的 我这里占时不做这个了 怕到时候代码太多乱
+    放大镜: https://github.com/dengzemiao/DZMMagnifierView
 
-                                                                            ---------------- 有BUG请联系我 技术QQ群:52181885
+    阅读打开书籍效果: https://github.com/dengzemiao/DZMAnimatedTransitioning
 
-# Demo效果GIF：
+    小说《覆盖效果》: https://github.com/dengzemiao/DZMCoverAnimation
 
-![CarouselView in action](gif_0.gif)
+    UIPageViewController 翻页背景颜色修改: http://www.jianshu.com/p/3e75fa22ada8
 
-# 文件介绍:
+***
 
-![CarouselView in action](icon_0.png)
+#### 导入项目流程:
 
-# 部分代码浏览
+![文件介绍1](icon_0.png)
 
-![CarouselView in action](code_0.png)
+***
 
-![CarouselView in action](code_1.png)
+### 有BUG请联系我 技术QQ群: （入群需要回答问题：写一句让APP崩溃的代码? 有的QQ版本不显示问题 已经出现过这样的情况 所以入群自己填上答案就行 防止广告之类的人进入）
+### 52181885 (已满)
+### 942885030 (新群)
 
-![CarouselView in action](code_2.png)
+***
+
+#### epub提示
+
+    DTCoreText同样也可以解析txt，epub...分页相关的功能，很方便。不需要像我这个Demo中一样复杂的解析处理。当然有喜欢研究CoreText可以参考下我的Demo。
+
+    DTCoreText对于epub来说，主要功能就是能够将我们输入的HTML文件进行解析,并自动关联相对应的css样式（也帮我们解析好了),我们需要做的就是输入一个HTML文件,
+
+    他就会给我们输出带有排版样式的NSAttributedString，然后我们直接使用CoreText进行画这个NSAttributedString就可以啦！
+
+    Github地址：https://github.com/Cocoanetics/DTCoreText
+
+***
+
+#### 功能扩展 ( 本地阅读 快速进入 ):
+
+    快速进入做法(我这里列2种):
+
+    1.【这种适用于所有文章使用】单独写一个快速进入的解析器,先解析第一章(或者第一页,数值自己控制)出来进行使用.其他后台线程解析获取。
+        
+        通过正则先搜索出来一个章节进行阅读,其他剩下的则再次通过DEMO里面给与的正则搜索获得文章的所有章节位置ranges
+        
+        然后取出第一个range进行解析进入阅读,其他的后台解析读取,每次解析一个章节时需要检查本地是否存在
+        
+        这样就可以在阅读过程中,可能随意点击一个没有解析到的章节
+        
+        直接优先解析出来进行阅读,且还可以像网络数据一样预加载前后章节,相当于解析器里面存的就是服务器数据
+        
+        你只是在获取回来使用而已。这样也不会出现重复解析章节的情况。
+    
+    2.【这种适用中小文章使用,原因是大文章查询以及解析久】直接全部解析成章节内容列表放在内存中使用, 一般不是天大的章节数目内存还是够用的。
+
+***
+
+#### DEMO老版本
+
+    2019-4-29 (停止更新)
+    Swift4.0 - https://github.com/dengzemiao/DZMeBookRead-Swift4.0
+
+    2018-9-6 (停止更新)
+    Swift3.x - https://github.com/dengzemiao/DZMeBookRead-Swift3.x
+
